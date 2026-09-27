@@ -1,514 +1,295 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jiří Schejbal – Instalatér, topenář | Havárie 24/7 | Liberec</title>
-<meta name="description" content="Jiří Schejbal – instalatér a topenář v Liberci. Havarijní služba 24/7, hodnocení 5,0 z 10 recenzí na Googlu. Telefon 731 239 501.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jiří Schejbal, instalatér a topenář v Liberci | telefon 0–24</title>
+<meta name="description" content="Instalatér a topenář Jiří Schejbal, Havlíčkova 129/7, Liberec-Horní Růžodol. Havárie vody, odpadů a topení, 24 hodin denně, 7 dní v týdnu. Telefon 731 239 501.">
+<meta name="theme-color" content="#eceeec" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#101213" media="(prefers-color-scheme: dark)">
+<link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;600;700&family=Big+Shoulders+Display:wght@700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --dark:#0f1720;
-    --dark2:#182530;
-    --accent:#1e88e5;
-    --accent2:#4fc3f7;
-    --text:#1b232b;
-    --muted:#5a6672;
-    --bg:#f5f7f9;
-    --white:#ffffff;
-    --radius:14px;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
-  body{
-    font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
-    background:var(--bg);
-    color:var(--text);
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-  }
-  img,svg{display:block;max-width:100%;}
-  a{color:inherit;text-decoration:none;}
-  .container{
-    width:100%;
-    max-width:1080px;
-    margin:0 auto;
-    padding:0 20px;
-  }
+:root{
+  color-scheme:light dark;
+  --paper:#eceeec;
+  --ink:#121517;
+  --muted:#535a5e;
+  --rule:#bfc5c6;
+  --cell:#121517;
+  --signal:#35c6d8;
+  --on-signal:#0b1112;
+  --pad:clamp(1.25rem,5vw,3rem);
+  --display:'Big Shoulders Display','Arial Narrow',sans-serif;
+  --text:'Libre Franklin',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root{--paper:#101213;--ink:#e4e8e7;--muted:#9da5a6;--rule:#343a3c;--cell:#8f9a9c}
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1.0625rem/1.55 var(--text);overflow-wrap:break-word;padding-bottom:4.75rem}
+h1,h2,p,ol,dl,figure,blockquote,table{margin:0}
+h1,h2{font-family:var(--display);font-weight:800;line-height:1}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:.18em}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+abbr[title]{text-decoration:none}
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.frame{max-width:72rem;margin-inline:auto;padding-inline:var(--pad)}
 
-  /* HEADER / HERO */
-  header{
-    background:linear-gradient(160deg,var(--dark) 0%, var(--dark2) 60%, #10202c 100%);
-    color:#fff;
-    padding:18px 0 56px;
-    position:relative;
-    overflow:hidden;
-  }
-  header::after{
-    content:"";
-    position:absolute;
-    right:-80px; top:-80px;
-    width:280px; height:280px;
-    background:radial-gradient(circle, rgba(79,195,247,0.25), transparent 70%);
-    border-radius:50%;
-  }
-  .topbar{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  .brand{
-    font-weight:800;
-    font-size:1.05rem;
-    letter-spacing:.2px;
-  }
-  .emergency-pill{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    background:rgba(239,83,80,0.18);
-    border:1px solid rgba(239,83,80,0.5);
-    color:#ffcdd2;
-    font-weight:700;
-    font-size:.78rem;
-    letter-spacing:.4px;
-    text-transform:uppercase;
-    padding:6px 12px;
-    border-radius:30px;
-  }
-  .emergency-pill .dot{
-    width:8px;height:8px;border-radius:50%;
-    background:#ef5350;
-    box-shadow:0 0 0 0 rgba(239,83,80,0.7);
-    animation:pulse 1.8s infinite;
-  }
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(239,83,80,0.6);}
-    70%{box-shadow:0 0 0 8px rgba(239,83,80,0);}
-    100%{box-shadow:0 0 0 0 rgba(239,83,80,0);}
-  }
-  .hero{
-    padding-top:48px;
-    text-align:center;
-  }
-  .hero .obor{
-    display:inline-block;
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.15);
-    color:var(--accent2);
-    font-size:.82rem;
-    font-weight:600;
-    letter-spacing:.6px;
-    text-transform:uppercase;
-    padding:6px 16px;
-    border-radius:30px;
-    margin-bottom:18px;
-  }
-  .hero h1{
-    font-size:clamp(1.7rem, 5vw, 2.7rem);
-    font-weight:800;
-    line-height:1.2;
-    margin-bottom:12px;
-  }
-  .hero .mesto{
-    color:#c7d3dc;
-    font-size:1.05rem;
-    margin-bottom:22px;
-  }
-  .rating{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    background:rgba(255,255,255,0.07);
-    border:1px solid rgba(255,255,255,0.14);
-    padding:10px 18px;
-    border-radius:40px;
-    margin-bottom:30px;
-    flex-wrap:wrap;
-    justify-content:center;
-  }
-  .stars{
-    color:#ffc94a;
-    font-size:1.15rem;
-    letter-spacing:2px;
-  }
-  .rating span.txt{
-    font-weight:700;
-    font-size:.95rem;
-  }
-  .rating span.sub{
-    color:#a9b6c0;
-    font-size:.85rem;
-    font-weight:500;
-  }
-  .cta-row{
-    display:flex;
-    gap:14px;
-    justify-content:center;
-    flex-wrap:wrap;
-  }
-  .btn{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    padding:14px 26px;
-    border-radius:10px;
-    font-weight:700;
-    font-size:1rem;
-    transition:transform .15s ease, box-shadow .15s ease;
-  }
-  .btn-primary{
-    background:var(--accent);
-    color:#fff;
-    box-shadow:0 8px 20px rgba(30,136,229,0.35);
-  }
-  .btn-primary:hover{transform:translateY(-2px);}
-  .btn-secondary{
-    background:rgba(255,255,255,0.08);
-    color:#fff;
-    border:1px solid rgba(255,255,255,0.25);
-  }
-  .btn-secondary:hover{background:rgba(255,255,255,0.15);}
+/* hlavička: jméno jako na razítku */
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:.15rem 1.5rem;padding-top:1rem;padding-bottom:.8rem;border-bottom:1px solid var(--ink)}
+.brand{font:800 1.3125rem/1.1 var(--display);letter-spacing:.03em}
+.brand span{font:400 1rem/1.1 var(--text);letter-spacing:0;color:var(--muted);margin-left:.35rem}
+.top-addr{font-size:.9375rem;color:var(--muted)}
 
-  /* SECTIONS */
-  section{
-    padding:56px 0;
-  }
-  .section-title{
-    text-align:center;
-    font-size:clamp(1.4rem, 4vw, 1.9rem);
-    font-weight:800;
-    margin-bottom:8px;
-  }
-  .section-sub{
-    text-align:center;
-    color:var(--muted);
-    max-width:560px;
-    margin:0 auto 34px;
-    font-size:.98rem;
-  }
+/* úvod */
+.hero{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem;padding-top:1.75rem;padding-bottom:2.75rem}
+.hero > *{min-width:0}
+.hero h1{font-size:clamp(4rem,21vw,9.5rem);line-height:.84;letter-spacing:-.005em;text-transform:uppercase}
+.sub{font:600 1.1875rem/1.4 var(--text);max-width:32rem}
+.sub span{display:block;font-weight:400;color:var(--muted);margin-top:.35rem}
+.phone{display:block;background:var(--signal);color:var(--on-signal);text-decoration:none;padding:.75rem 1rem .85rem;border-radius:2px}
+.phone-label{display:block;font:600 1rem/1.2 var(--text)}
+.phone-num{display:block;font:800 clamp(3.4rem,17.5vw,6.5rem)/.95 var(--display);white-space:nowrap;margin-top:.2rem;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+.phone:hover .phone-num{text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:.08em}
+.phone:focus-visible{outline-color:var(--ink)}
+.more{display:grid;gap:.6rem;font-size:1rem;max-width:32rem}
+.more p{color:var(--muted)}
+.more a{color:var(--ink);font-weight:600}
 
-  /* SERVICES */
-  .services-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-  @media(min-width:620px){
-    .services-grid{grid-template-columns:1fr 1fr;}
-  }
-  .service-card{
-    background:var(--white);
-    border-radius:var(--radius);
-    padding:22px 20px;
-    box-shadow:0 2px 10px rgba(15,23,32,0.06);
-    border:1px solid #e9edf0;
-    display:flex;
-    gap:14px;
-    align-items:flex-start;
-  }
-  .service-icon{
-    flex-shrink:0;
-    width:42px;height:42px;
-    border-radius:10px;
-    background:rgba(30,136,229,0.1);
-    color:var(--accent);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:1.3rem;
-  }
-  .service-card h3{
-    font-size:1.02rem;
-    font-weight:700;
-    margin-bottom:4px;
-  }
-  .service-card p{
-    color:var(--muted);
-    font-size:.9rem;
-  }
+/* otevírací doba: týden po hodinách, 7 × 24 dílků */
+.hours{border-top:4px solid var(--ink);padding-top:.75rem}
+.hours h2{font:600 1rem/1.2 var(--text);margin-bottom:.6rem}
+.clock{width:100%;border-collapse:collapse;table-layout:fixed}
+.clock col.day{width:2.1rem}
+.clock th,.clock td{padding:0}
+.clock tbody th{font:600 .9375rem/1 var(--text);color:var(--muted);text-align:left;vertical-align:middle;padding-right:.35rem}
+.clock tbody td{padding-bottom:4px}
+.bar{display:block;height:1.2rem;background:linear-gradient(90deg,var(--cell) calc(100% - 2px),transparent 0) 0 0/calc(100% / 24) 100% repeat-x}
+.scale{position:relative;display:block;height:1.35rem;font:700 1rem/1 var(--display);color:var(--muted);font-variant-numeric:tabular-nums}
+.scale span{position:absolute;top:.3rem;transform:translateX(-50%)}
+.scale span:first-child{transform:none}
+.scale span:last-child{transform:translateX(-100%)}
+.hours .note{margin-top:.8rem;font-size:1rem;color:var(--muted);max-width:34rem}
+.hours .note strong{color:var(--ink);font-weight:600}
 
-  /* HOURS */
-  .hours-box{
-    background:var(--dark);
-    color:#fff;
-    border-radius:var(--radius);
-    padding:32px 26px;
-    display:flex;
-    flex-direction:column;
-    gap:18px;
-    max-width:640px;
-    margin:0 auto;
-  }
-  .hours-row{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:12px;
-    border-bottom:1px solid rgba(255,255,255,0.1);
-    padding-bottom:14px;
-    flex-wrap:wrap;
-  }
-  .hours-row:last-child{border-bottom:none;padding-bottom:0;}
-  .hours-row .label{
-    font-weight:600;
-    color:#dbe4ea;
-  }
-  .hours-row .value{
-    font-weight:800;
-    color:var(--accent2);
-    font-size:1.05rem;
-  }
-  .hours-note{
-    color:#a9b6c0;
-    font-size:.85rem;
-    text-align:center;
-  }
+/* sekce: štítek vlevo, obsah vpravo */
+.band{border-top:1px solid var(--ink);padding-top:2.25rem;padding-bottom:2.75rem}
+.split{display:grid;grid-template-columns:minmax(0,1fr);gap:1.25rem 3rem}
+.split > *{min-width:0}
+.split h2{font-size:clamp(2.2rem,9vw,3.25rem);line-height:.95;max-width:12ch;text-transform:uppercase}
+.aside p{margin-top:.9rem;max-width:22rem}
 
-  /* CONTACT */
-  .contact-grid{
-    display:grid;
-    grid-template-columns:1fr;
-    gap:16px;
-    max-width:640px;
-    margin:0 auto;
-  }
-  @media(min-width:560px){
-    .contact-grid{grid-template-columns:1fr 1fr;}
-  }
-  .contact-card{
-    background:var(--white);
-    border:1px solid #e9edf0;
-    border-radius:var(--radius);
-    padding:22px;
-    text-align:center;
-    box-shadow:0 2px 10px rgba(15,23,32,0.05);
-  }
-  .contact-card .ico{
-    width:46px;height:46px;
-    border-radius:50%;
-    background:rgba(30,136,229,0.1);
-    color:var(--accent);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    margin:0 auto 12px;
-    font-size:1.4rem;
-  }
-  .contact-card h3{
-    font-size:.95rem;
-    text-transform:uppercase;
-    letter-spacing:.5px;
-    color:var(--muted);
-    margin-bottom:6px;
-  }
-  .contact-card a.value, .contact-card .value{
-    font-size:1.15rem;
-    font-weight:700;
-    color:var(--text);
-    word-break:break-word;
-  }
-  .contact-card a.value:hover{color:var(--accent);}
-  .address-block{
-    grid-column:1 / -1;
-  }
-  .map-link{
-    display:inline-flex;
-    align-items:center;
-    gap:8px;
-    margin-top:12px;
-    color:var(--accent);
-    font-weight:700;
-    font-size:.92rem;
-    border:1px solid var(--accent);
-    padding:9px 16px;
-    border-radius:8px;
-  }
-  .map-link:hover{background:rgba(30,136,229,0.08);}
+/* co říct do telefonu */
+.prep{list-style:none;padding:0;counter-reset:krok;display:grid;grid-template-columns:minmax(0,1fr);column-gap:2.5rem}
+.prep li{counter-increment:krok;display:grid;grid-template-columns:1.6rem minmax(0,1fr);gap:.75rem;padding-top:.9rem;padding-bottom:1rem;border-top:1px solid var(--rule)}
+.prep li > *{min-width:0}
+.prep li::before{content:counter(krok);font:800 1.75rem/1 var(--display)}
+.prep strong{font-weight:700}
 
-  /* FOOTER */
-  footer{
-    background:var(--dark);
-    color:#9fb0bc;
-    text-align:center;
-    padding:26px 0;
-    font-size:.82rem;
-  }
-  footer .fname{
-    color:#fff;
-    font-weight:700;
-    margin-bottom:4px;
-  }
-  footer .credit{
-    margin-top:10px;
-    color:#647685;
-    font-size:.76rem;
-  }
+/* recenze */
+.rating strong{font-weight:700}
+.q{padding-top:1.4rem;padding-bottom:1.5rem;border-top:1px solid var(--rule)}
+.q:first-child{border-top:0;padding-top:0}
+.q .when{font:800 1.5rem/1 var(--display);margin-bottom:.55rem;font-variant-numeric:tabular-nums}
+.q blockquote{font-size:1.125rem;line-height:1.5;max-width:38rem}
+.q.lead-q blockquote{font:400 clamp(1.25rem,4.6vw,1.75rem)/1.38 var(--text);max-width:42rem}
+.q figcaption{margin-top:.65rem;font-weight:600}
+
+/* sídlo */
+.addr{font:800 clamp(2.4rem,11vw,4rem)/1 var(--display)}
+.addr span{display:block;margin-top:.45rem;font:600 clamp(1.125rem,4.4vw,1.375rem)/1.3 var(--text)}
+.go{margin-top:1.25rem;margin-bottom:1.75rem}
+.go a{display:inline-flex;align-items:center;min-height:2.875rem;padding:0 1.1rem;border:2px solid var(--ink);border-radius:2px;text-decoration:none;font-weight:600}
+.go a:hover{background:var(--ink);color:var(--paper)}
+.facts{display:grid;grid-template-columns:minmax(0,5.5rem) minmax(0,1fr);gap:.55rem 1rem;max-width:34rem}
+.facts dt{color:var(--muted)}
+.facts dd{margin:0}
+
+.foot{border-top:1px solid var(--ink);padding-top:1.1rem;padding-bottom:1.6rem;display:flex;flex-wrap:wrap;justify-content:space-between;gap:.4rem 2rem;font-size:.875rem;color:var(--muted)}
+
+/* lišta s telefonem jen na mobilu */
+.callbar{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem var(--pad) calc(.65rem + env(safe-area-inset-bottom));background:var(--signal);color:var(--on-signal);text-decoration:none;font:800 1.875rem/1 var(--display);border-top:1px solid rgba(0,0,0,.35);transition:transform .2s ease,visibility 0s linear 0s}
+.callbar span{font:600 1rem/1 var(--text)}
+.callbar:focus-visible{outline-offset:-4px;outline-color:var(--on-signal)}
+.callbar.is-away{transform:translateY(100%);visibility:hidden;transition:transform .2s ease,visibility 0s linear .2s}
+
+@media (min-width:40rem){
+  .prep{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bar{height:1.5rem}
+}
+@media (min-width:56rem){
+  body{padding-bottom:0}
+  .callbar{display:none}
+  .hero{grid-template-columns:minmax(0,6fr) minmax(0,6fr);grid-template-areas:"h1 h1" "sub ." "phone hours" "more hours";column-gap:3.5rem;row-gap:1.4rem;padding-top:3rem;padding-bottom:3.75rem}
+  .hero h1{grid-area:h1}
+  .sub{grid-area:sub;margin-bottom:.75rem}
+  .phone{grid-area:phone;align-self:start;padding:1.1rem 1.4rem 1.2rem}
+  .phone-num{font-size:clamp(4rem,8.2vw,6.25rem)}
+  .more{grid-area:more;align-self:start}
+  .hours{grid-area:hours;align-self:start}
+  .split{grid-template-columns:minmax(0,4fr) minmax(0,8fr)}
+  .band{padding-top:3rem;padding-bottom:3.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .callbar,.callbar.is-away{transition:none}
+}
 </style>
-</head>
-<body>
-
-<header>
-  <div class="container">
-    <div class="topbar">
-      <div class="brand">Jiří Schejbal</div>
-      <div class="emergency-pill"><span class="dot"></span> Havárie 24/7</div>
-    </div>
-    <div class="hero">
-      <span class="obor">Instalatér · Topenář</span>
-      <h1>Instalatérské a topenářské práce v Liberci</h1>
-      <p class="mesto">Liberec a okolí · nonstop havarijní služba</p>
-      <div class="rating">
-        <span class="stars">★★★★★</span>
-        <span class="txt">5,0</span>
-        <span class="sub">z 10 recenzí na Googlu</span>
-      </div>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="tel:+420731239501">📞 731 239 501</a>
-        <a class="btn btn-secondary" href="#kontakt">Kontaktní údaje</a>
-      </div>
-    </div>
-  </div>
-</header>
-
-<section id="sluzby">
-  <div class="container">
-    <h2 class="section-title">Služby</h2>
-    <p class="section-sub">Instalatérské a topenářské práce v Liberci a okolí – včetně řešení havarijních situací.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🚿</div>
-        <div>
-          <h3>Instalatérské práce</h3>
-          <p>Montáž a opravy vodovodních a odpadních rozvodů, baterií, ventilů a sanitární techniky.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🔥</div>
-        <div>
-          <h3>Topenářské práce</h3>
-          <p>Montáž, servis a údržba topných systémů, kotlů a rozvodů ústředního vytápění.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🚨</div>
-        <div>
-          <h3>Havarijní služba</h3>
-          <p>Rychlé řešení havárií vody a topení – protržené potrubí, únik vody, výpadek topení.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🔧</div>
-        <div>
-          <h3>Opravy a servis</h3>
-          <p>Odstranění netěsností, výměna vadných komponent a pravidelná údržba instalací.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">🏠</div>
-        <div>
-          <h3>Rozvody pro byty a domy</h3>
-          <p>Realizace a úpravy vodovodních a topenářských rozvodů v bytech a rodinných domech.</p>
-        </div>
-      </div>
-      <div class="service-card">
-        <div class="service-icon">📋</div>
-        <div>
-          <h3>Poradenství na místě</h3>
-          <p>Posouzení stavu instalace a topení přímo na místě a doporučení dalšího postupu.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="oteviraci-doba" style="background:var(--white);">
-  <div class="container">
-    <h2 class="section-title">Otevírací doba</h2>
-    <p class="section-sub">Havarijní služba je k dispozici nonstop, 7 dní v týdnu.</p>
-    <div class="hours-box">
-      <div class="hours-row">
-        <span class="label">Havarijní služba</span>
-        <span class="value">24/7 – nonstop</span>
-      </div>
-      <div class="hours-row">
-        <span class="label">Objednání zakázky</span>
-        <span class="value">telefonicky dle dohody</span>
-      </div>
-      <p class="hours-note">Aktuální dostupnost a termín ověříte telefonicky na čísle 731 239 501.</p>
-    </div>
-  </div>
-</section>
-
-<section id="kontakt">
-  <div class="container">
-    <h2 class="section-title">Kontakt</h2>
-    <p class="section-sub">Neváhejte zavolat nebo napsat – v případě havárie jsme k dispozici nonstop.</p>
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="ico">📞</div>
-        <h3>Telefon</h3>
-        <a class="value" href="tel:+420731239501">731 239 501</a>
-      </div>
-      <div class="contact-card">
-        <div class="ico">✉️</div>
-        <h3>E-mail</h3>
-        <a class="value" href="mailto:schejbaljirii@seznam.cz">schejbaljirii@seznam.cz</a>
-      </div>
-      <div class="contact-card address-block">
-        <div class="ico">📍</div>
-        <h3>Adresa</h3>
-        <div class="value">Havlíčkova 129/7, 460 07 Liberec VII-Horní Růžodol</div>
-        <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=Havl%C3%AD%C4%8Dkova%20129%2F7%2C%20460%2007%20Liberec%20VII-Horn%C3%AD%20R%C5%AF%C5%BEodol" target="_blank" rel="noopener">🗺️ Zobrazit na mapě</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <div class="fname">Jiří Schejbal – instalatér, topenář</div>
-    <div>Havlíčkova 129/7, 460 07 Liberec VII-Horní Růžodol · 731 239 501</div>
-    <div class="credit">Ukázka webu — Vladislav Zachariev</div>
-  </div>
-</footer>
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "Plumber",
   "name": "Jiří Schejbal - instalatér, topenář - Havárie 24/7",
-  "image": "",
-  "description": "Instalatérské a topenářské práce v Liberci, včetně nonstop havarijní služby.",
-  "telephone": "+420731239501",
+  "description": "Instalatér a topenář v Liberci, na telefonu 24 hodin denně, 7 dní v týdnu.",
+  "telephone": "+420 731 239 501",
   "email": "schejbaljirii@seznam.cz",
+  "identifier": {"@type": "PropertyValue", "propertyID": "IČO", "value": "17073651"},
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Havlíčkova 129/7",
-    "addressLocality": "Liberec VII-Horní Růžodol",
     "postalCode": "460 07",
+    "addressLocality": "Liberec-Horní Růžodol",
     "addressCountry": "CZ"
   },
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "5.0",
-    "reviewCount": "10"
-  },
-  "openingHoursSpecification": {
+  "geo": {"@type": "GeoCoordinates", "latitude": 50.755887, "longitude": 15.060095},
+  "hasMap": "https://www.google.com/maps/place/Ji%C5%99%C3%AD+Schejbal+-+instalat%C3%A9r,+topen%C3%A1%C5%99+-+Hav%C3%A1rie+24%2F7/data=!4m7!3m6!1s0x4709352efb373b4d:0xa54153d220b17faf!8m2!3d50.755887!4d15.0600947!16s%2Fg%2F11s8z2r4zl!19sChIJTTs3-y41CUcRr3-xINJTQaU",
+  "openingHours": "Mo-Su 00:00-23:59",
+  "openingHoursSpecification": [{
     "@type": "OpeningHoursSpecification",
-    "dayOfWeek": [
-      "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
-    ],
+    "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     "opens": "00:00",
     "closes": "23:59"
-  },
-  "url": ""
+  }],
+  "aggregateRating": {"@type": "AggregateRating", "ratingValue": "5.0", "bestRating": "5", "worstRating": "1", "ratingCount": "10"}
 }
 </script>
+</head>
+<body>
 
+<header class="top frame">
+  <span class="brand">Jiří Schejbal<span>instalatér, topenář</span></span>
+  <span class="top-addr">Havlíčkova 129/7, Liberec</span>
+</header>
+
+<main>
+
+<section class="hero frame" aria-labelledby="titulek">
+  <h1 id="titulek">Volejte i&nbsp;v&nbsp;noci.</h1>
+
+  <p class="sub">Instalatér a&nbsp;topenář v&nbsp;Liberci. Havárie vody, odpadů&nbsp;i&nbsp;topení.<span>Zavolejte, popište, co se děje, a&nbsp;domluvíme se, kdy dorazím. Večer, v&nbsp;noci i&nbsp;v&nbsp;neděli.</span></p>
+
+  <a class="phone" href="tel:+420731239501">
+    <span class="phone-label">Telefon, 0–24</span>
+    <span class="phone-num">731 239 501</span>
+  </a>
+
+  <div class="hours">
+    <h2>Otevírací doba</h2>
+    <table class="clock">
+      <caption class="vh">Pondělí až neděle, každý den 0–24</caption>
+      <colgroup><col class="day"><col></colgroup>
+      <thead>
+        <tr><td></td><th scope="col"><span class="scale" aria-hidden="true"><span style="left:0">0</span><span style="left:25%">6</span><span style="left:50%">12</span><span style="left:75%">18</span><span style="left:100%">24</span></span><span class="vh">Hodiny</span></th></tr>
+      </thead>
+      <tbody>
+        <tr><th scope="row"><abbr title="pondělí">Po</abbr></th><td><span class="bar"></span><span class="vh">0–24</span></td></tr>
+        <tr><th scope="row"><abbr title="úterý">Út</abbr></th><td><span class="bar"></span><span class="vh">0–24</span></td></tr>
+        <tr><th scope="row"><abbr title="středa">St</abbr></th><td><span class="bar"></span><span class="vh">0–24</span></td></tr>
+        <tr><th scope="row"><abbr title="čtvrtek">Čt</abbr></th><td><span class="bar"></span><span class="vh">0–24</span></td></tr>
+        <tr><th scope="row"><abbr title="pátek">Pá</abbr></th><td><span class="bar"></span><span class="vh">0–24</span></td></tr>
+        <tr><th scope="row"><abbr title="sobota">So</abbr></th><td><span class="bar"></span><span class="vh">0–24</span></td></tr>
+        <tr><th scope="row"><abbr title="neděle">Ne</abbr></th><td><span class="bar"></span><span class="vh">0–24</span></td></tr>
+      </tbody>
+    </table>
+    <p class="note"><strong>Po–Ne, 0–24.</strong> Každý dílek je jedna hodina a&nbsp;žádný nechybí: všech 168&nbsp;hodin v&nbsp;týdnu.</p>
+  </div>
+
+  <div class="more">
+    <p>Menší práci, která počká, můžete poslat i&nbsp;<span style="white-space:nowrap">e-mailem</span>: <a href="mailto:schejbaljirii@seznam.cz">schejbaljirii@seznam.cz</a>. Když teče, volejte.</p>
+    <p><a href="#recenze">Všech 10 hodnocení na Googlu je pět hvězd.</a></p>
+  </div>
+</section>
+
+<section class="band frame" aria-labelledby="pripravit">
+  <div class="split">
+    <h2 id="pripravit">Co říct do telefonu</h2>
+    <ol class="prep">
+      <li><p><strong>Hlavní uzávěr vody.</strong> Víte, kde je, a&nbsp;je zavřený? Když teče, zavřete ho ještě před voláním. V&nbsp;bytě bývá u&nbsp;vodoměru.</p></li>
+      <li><p><strong>Co teče a&nbsp;odkud.</strong> Trubka, odpad pod dřezem, radiátor, nebo kotel? Kape to, nebo stříká?</p></li>
+      <li><p><strong>Adresa, patro a&nbsp;přístup.</strong> Ulice a&nbsp;číslo domu, patro, jméno na zvonku a&nbsp;kde se dá zaparkovat.</p></li>
+      <li><p><strong>Fotka.</strong> Vyfoťte místo, odkud to teče. U&nbsp;topení se hodí i&nbsp;fotka štítku na kotli.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="band frame" id="recenze" aria-labelledby="recenze-h">
+  <div class="split">
+    <div class="aside">
+      <h2 id="recenze-h">Z&nbsp;recenzí na Googlu</h2>
+      <p class="rating"><strong>10 z&nbsp;10</strong> hodnocení je pět hvězd, průměr 5,0. Nižší hodnocení zatím nikdo nedal.</p>
+      <p><a href="https://www.google.com/maps/place/Ji%C5%99%C3%AD+Schejbal+-+instalat%C3%A9r,+topen%C3%A1%C5%99+-+Hav%C3%A1rie+24%2F7/data=!4m7!3m6!1s0x4709352efb373b4d:0xa54153d220b17faf!8m2!3d50.755887!4d15.0600947!16s%2Fg%2F11s8z2r4zl!19sChIJTTs3-y41CUcRr3-xINJTQaU" target="_blank" rel="noopener">Všechny recenze v&nbsp;Mapách Google</a></p>
+    </div>
+    <div class="quotes">
+      <figure class="q lead-q">
+        <p class="when">Kolem 19:00</p>
+        <blockquote>Pan Jiří Schejbal se od prvního zavolání, které jsem uskutečnil kolem 19:00 hodin večer, choval velmi slušně a ochotně i přes to, že již byla pokročilá hodina. Byl v pořadí čtvrtý, kterému jsem volal. Tři předešlí nevzali telefon a nebo neměli prostor se mnou zabývat. … skutečně se neprodleně dostavil i na moji adresu, kde prohlédl poškození a odjel ihned do Bauhausu dokoupit součásti, které byly třeba.</blockquote>
+        <figcaption>Karel K.</figcaption>
+      </figure>
+      <figure class="q">
+        <p class="when">16:30 zavolal, v&nbsp;17:00 byl u&nbsp;něj</p>
+        <blockquote>V 16:30 jsem zavolal s žádostí o připojení kuchyně. V 17 byl u nás. Vše vyřešil, poradil s kotlem a ještě odvzdušnil radiátory. Děkuju, že existují takový řemeslníci. Jednoznačně doporučuji.</blockquote>
+        <figcaption>Marek H.</figcaption>
+      </figure>
+      <figure class="q">
+        <p class="when">Večer</p>
+        <blockquote>Pan Schejbal je topenář na svém místě ,večer přijel na zavolání vyřešil problém s topením opravil,vysvětlil a ještě poradil<br>Moc příjemný pán a šikovný ,ještě jednou děkuji .</blockquote>
+        <figcaption>Mirek V.</figcaption>
+      </figure>
+      <figure class="q">
+        <p class="when">Opakovaně, na chalupě</p>
+        <blockquote>Instalatérské služby pana Schejbala jsem využil opakovaně při úpravách chalupy poblíž Liberce. Vždy bezva přístup, ochota provést i malé zakázky a dodržení termínu. Ceny nastavené rozumně. Doporučuji-</blockquote>
+        <figcaption>Petr P.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band frame" aria-labelledby="kde">
+  <div class="split">
+    <h2 id="kde">Sídlo a&nbsp;kontakt</h2>
+    <div>
+      <p class="addr">Havlíčkova 129/7,<span>460&nbsp;07 Liberec-Horní Růžodol</span></p>
+      <p class="go"><a href="https://www.google.com/maps/place/Ji%C5%99%C3%AD+Schejbal+-+instalat%C3%A9r,+topen%C3%A1%C5%99+-+Hav%C3%A1rie+24%2F7/data=!4m7!3m6!1s0x4709352efb373b4d:0xa54153d220b17faf!8m2!3d50.755887!4d15.0600947!16s%2Fg%2F11s8z2r4zl!19sChIJTTs3-y41CUcRr3-xINJTQaU" target="_blank" rel="noopener">Otevřít v&nbsp;Mapách Google</a></p>
+      <dl class="facts">
+        <dt>Telefon</dt><dd><a href="tel:+420731239501">731 239 501</a>, 0–24</dd>
+        <dt>E-mail</dt><dd><a href="mailto:schejbaljirii@seznam.cz">schejbaljirii@seznam.cz</a></dd>
+        <dt>IČO</dt><dd>17073651</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot frame">
+  <p>Jiří Schejbal, instalatér a&nbsp;topenář, IČO 17073651</p>
+  <p>Ukázka webu — Vladislav Zachariev</p>
+</footer>
+
+<a class="callbar" href="tel:+420731239501"><span>Zavolat, 0–24</span>731 239 501</a>
+
+<script>
+/* Spodní lišta s telefonem se schová, dokud je vidět velké číslo nahoře.
+   Bez JavaScriptu zůstane lišta prostě viditelná. */
+(function () {
+  var bar = document.querySelector('.callbar'), big = document.querySelector('.phone');
+  if (!bar || !big || !('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function (e) { bar.classList.toggle('is-away', e[0].isIntersecting); }).observe(big);
+})();
+</script>
 </body>
 </html>
